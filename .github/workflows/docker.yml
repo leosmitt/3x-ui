@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          submodules: true
+          submodules: "true"
 
       - name: Docker meta
         id: meta
@@ -37,7 +37,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          install: true
+          install: "true"
 
       - name: Login to GHCR
         uses: docker/login-action@v3
@@ -46,15 +46,6 @@ jobs:
           username: leosmit
           password: nekrvn5E@
       - name : 3xui
-        run : ./Dockerfile
-      - container_name: 3xui_app
-    # hostname: yourhostname <- optional
-    volumes:
-      - $PWD/db/:/etc/x-ui/
-      - $PWD/cert/:/root/cert/
-    environment:
-      XRAY_VMESS_AEAD_FORCED: "false"
-      XUI_ENABLE_FAIL2BAN: "true"
-    tty: true
-    network_mode: host
-    restart: unless-stopped
+        run : "./Dockerfile"
+        
+ 
